@@ -23,7 +23,7 @@ const userData=useSelector((store)=>store.user)
     console.log(user);
     }catch(error){
      if(error.status===401){
-      navigate('/login')
+     return navigate('/login')
      }
       console.log(error);
       

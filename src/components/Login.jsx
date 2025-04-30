@@ -4,6 +4,7 @@ import {useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+
 import { addUser } from '../utils/userSlice'
 import { BASE_URL } from '../utils/constants'
 const Login = () => {
@@ -11,6 +12,7 @@ const [emailId,setEmailId]=useState("akshay@gmail.com");
 const [password,setPassword]=useState("Akshay@123");
 const dispatch=useDispatch()
 const navigate=useNavigate();
+const [error,setError]=useState("")
 const handleLogin=async ()=>{
   
  try{
@@ -22,7 +24,9 @@ const handleLogin=async ()=>{
   dispatch(addUser(res.data)) //added data into the store
   navigate('/')
  }catch(error){
-  console.log(error);
+  setError(error?.response?.data||"Something sent wrong");
+  
+  
  }
 
 }
@@ -50,6 +54,7 @@ const handleLogin=async ()=>{
 
 </label>
     </div>
+    <p className='text-red-500'>{error}</p>
     <div className="card-actions justify-center m-2">
       <button className="btn btn-primary" onClick={handleLogin}>Login</button>
     </div>
