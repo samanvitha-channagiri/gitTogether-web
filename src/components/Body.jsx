@@ -20,7 +20,7 @@ const userData=useSelector((store)=>store.user)
       const res=await axios.get(BASE_URL+"/profile/view",{withCredentials:true})
       dispatch(addUser(res.data))
       
-    console.log(user);
+   
     }catch(error){
      if(error.status===401){
      return navigate('/login')
