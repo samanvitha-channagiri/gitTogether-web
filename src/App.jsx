@@ -14,7 +14,7 @@ function App() {
   return (
    <>
    <Provider store={appStore}>
-   <BrowserRouter basename='/'>
+   <BrowserRouter >
    <Routes>
     <Route path="/" element={<Body/>}>
     <Route path="/" element={<Feed/>}/>
